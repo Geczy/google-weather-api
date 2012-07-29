@@ -118,7 +118,7 @@ class Google_Weather  {
 	 *  NYTimes
 	 *  Yahoo
 	 *
-	 * @param    string    $iconSet    The folder name containing your icons in `/assets/img/`.
+	 * @param    string    $iconSet    The folder name containing your icons in `/assets/img/*`.
 	 */
 	public function setIcons($iconSet) {
 

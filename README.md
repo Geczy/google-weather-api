@@ -74,7 +74,7 @@ $googleWeather->getWeather('Paris');
 
 ```php
 <?php
-$googleWeather->setIcons('Google'); // Must exist in /assets/icons/*
+$googleWeather->setIcons('Google'); // Must exist in `/assets/img/*`
 $googleWeather->getWeather('Paris');
 ```
 
