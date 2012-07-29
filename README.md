@@ -19,9 +19,9 @@ Clone the repo, `git clone git://github.com/Geczy/google-weather-api.git`, or [d
 include_once('classes/google_weather.class.php');
 
 $googleWeather = new \Geczy\Weather\GoogleWeatherAPI();
-$weatherData = $googleWeather->getWeather();
+$weatherData = $googleWeather->getWeather('Los Angeles');
 
-/* Your view file that formats the array response. */
+/* Your view file that formats the array response $weatherData. */
 include('views/example1.php');
 ```
 
@@ -38,7 +38,6 @@ Simply instantiate GoogleWeatherAPI with your own variables to override the defa
 ```php
 <?php
 $defaults = array(
-	'location' => 'Paris',
 	'degree'   => 'c',
 	'language' => 'fr',
 	'icons'    => 'Google'

@@ -23,7 +23,6 @@ class GoogleWeatherAPI {
 	 * Default settings.
 	 */
 	public $defaults = array(
-		'location' => 'Los Angeles',
 		'degree'   => 'f',
 		'language' => 'en',
 		'icons'    => 'Dotvoid'
@@ -48,8 +47,6 @@ class GoogleWeatherAPI {
 
 		$this->defaultSettings($defaults);
 
-		$this->displayError($this->error);
-
 	}
 
 	/**
@@ -64,7 +61,6 @@ class GoogleWeatherAPI {
 
 		$this->setIcons($this->defaults['icons']);
 		$this->setLanguage($this->defaults['language']);
-		$this->setLocation($this->defaults['location']);
 		$this->setDegree($this->defaults['degree']);
 
 	}
@@ -142,14 +138,11 @@ class GoogleWeatherAPI {
 	 * Entering a location parameter will override the default location.
 	 * Leaving it empty will retrieve the default location.
 	 *
-	 * @param    string     $location    This can be either zip, city, coordinates, etc. (Optional)
+	 * @param    string     $location    This can be either zip, city, coordinates, etc.
 	 */
-	public function getWeather($location = '') {
+	public function getWeather($location) {
 
-		if ( !empty($location) ) $this->setLocation($location);
-
-		/* Validate submission data. */
-		$this->validate();
+		$this->setLocation($location);
 
 		$query = $this->buildRequest();
 		$result = $this->sendRequest($query);
@@ -157,19 +150,12 @@ class GoogleWeatherAPI {
 		$validated = $this->validateResponse($result);
 		$processed = $this->processResponse($validated);
 
-		if ( !empty($this->error) ) return false;
+		if ( !empty($this->error) ) {
+			$this->displayError($this->error);
+			return false;
+		}
 
 		return $processed;
-
-	}
-
-	/**
-	 * Confirms there is a location set.
-	 */
-	private function validate() {
-
-		if ( empty( $this->location ) )
-			$this->error = 'You didn\'t even enter anything! &gt;_&gt;';
 
 	}
 
@@ -230,13 +216,8 @@ class GoogleWeatherAPI {
 		/* Remove empty results */
 		$response = array_filter( $response );
 
-		if ( empty($response) ) {
-
-			/* Set the location back to default. */
-			$this->setLocation( $this->defaults['location'] );
+		if ( empty($response) )
 			$this->error = 'Location could not be determined.';
-
-		}
 
 		return $response;
 

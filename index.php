@@ -43,11 +43,13 @@
               $googleWeather->setDegree($degree);
 
               /* Get data. */
-              $weatherData = $googleWeather->getWeather();
+              $weatherData = $googleWeather->getWeather('Los Angeles');
 
               /* Include the view. */
-              $viewsDir = dirname(__FILE__) . '/views/';
-              include($viewsDir . 'example1.php');
+			  if ( $weatherData ) :
+				$viewsDir = dirname(__FILE__) . '/views/';
+				include($viewsDir . 'example1.php');
+			  endif;
 
             ?></p>
           </div>
