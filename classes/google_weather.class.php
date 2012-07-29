@@ -45,10 +45,7 @@ class Google_Weather  {
 	 */
 	function __construct( $defaults = array() ) {
 
-		if ( empty($_SESSION) ) session_start();
-
 		$this->defaultSettings($defaults);
-		$this->formRequests();
 
 		$this->displayError($this->error);
 
@@ -67,22 +64,7 @@ class Google_Weather  {
 		$this->setIcons($this->defaults['icons']);
 		$this->setLanguage($this->defaults['language']);
 		$this->setLocation($this->defaults['location']);
-
-		$degree = !empty($_SESSION['degree']) ? $_SESSION['degree'] : $this->defaults['degree'];
-		$this->setDegree($degree);
-
-	}
-
-	/**
-	 * Swap the defaults with those of a form request.
-	 */
-	private function formRequests() {
-
-		/* GET request to display Celsius or Fahrenheit. */
-		if ( !empty($_GET['degree']) ) $this->setDegree( $_GET['degree'] );
-
-		/* Form location submission. */
-		if ( !empty($_POST['location']) ) $this->getWeather( $_POST['location'] );
+		$this->setDegree($this->defaults['degree']);
 
 	}
 
@@ -142,12 +124,10 @@ class Google_Weather  {
 
 			case 'f':
 			case 'c':
-				$_SESSION['degree'] = $degree;
 				$this->defaults['degree'] = $degree;
 				break;
 
 			default :
-				$_SESSION['degree'] = 'f';
 				$this->defaults['degree'] = 'f';
 				break;
 

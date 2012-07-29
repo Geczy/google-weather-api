@@ -35,9 +35,17 @@
 
               include_once('classes/google_weather.class.php');
 
+              /* Instantiate class. */
               $googleWeather = new Google_Weather();
-              $processed = $googleWeather->getWeather();
 
+              /* Set degree. */
+              $degree = !empty($_GET['degree']) ? $_GET['degree'] : 'f';
+              $googleWeather->setDegree($degree);
+
+              /* Get data. */
+              $weatherData = $googleWeather->getWeather();
+
+              /* Include the view. */
               $viewsDir = dirname(__FILE__) . '/views/';
               include($viewsDir . 'example1.php');
 

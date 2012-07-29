@@ -1,6 +1,6 @@
 <?php
 
-$degree = $_SESSION['degree'];
+$degree = !empty($_GET['degree']) ? $_GET['degree'] : 'f';
 $degree = ($degree == 'f')
 	? '&deg;F | <a href="?degree=c">&deg;C</a>'
 	: '&deg;C | <a href="?degree=f">&deg;F</a>';
@@ -18,7 +18,7 @@ $degree = ($degree == 'f')
 </style>
 
 <div class="weatherHeader">
-  <b>Weather</b> for <b><?php echo $processed['info']['city']; ?></b>
+  <b>Weather</b> for <b><?php echo $weatherData['info']['city']; ?></b>
 </div>
 
 <table>
@@ -26,19 +26,19 @@ $degree = ($degree == 'f')
   <tbody>
 
   <tr>
-    <td><img id="mainTempImg" src="<?php echo $processed['current']['icon']; ?>"></td>
+    <td><img id="mainTempImg" src="<?php echo $weatherData['current']['icon']; ?>"></td>
     <td>
-      <h3 class="currentTemp"><?php echo $processed['current']['temp_f']; ?> <?php echo $degree; ?></h3>
+      <h3 class="currentTemp"><?php echo $weatherData['current']['temp_f']; ?> <?php echo $degree; ?></h3>
       <div class="tempDetails">
-        <p><?php echo $processed['current']['condition']; ?></p>
-        <p><?php echo $processed['current']['wind_condition']; ?></p>
-        <p><?php echo $processed['current']['humidity']; ?></p>
+        <p><?php echo $weatherData['current']['condition']; ?></p>
+        <p><?php echo $weatherData['current']['wind_condition']; ?></p>
+        <p><?php echo $weatherData['current']['humidity']; ?></p>
       </div>
     </td>
 
     <td style="width:5px;border-left:solid 1px #d8d8d8"></td>
 
-    <?php foreach ( $processed['forecast'] as $day => $forecast ) : ?>
+    <?php foreach ( $weatherData['forecast'] as $day => $forecast ) : ?>
 
       <td class="forecast">
         <p><?php echo $day; ?></p>
