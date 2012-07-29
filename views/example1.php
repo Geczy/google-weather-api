@@ -1,6 +1,5 @@
 <?php
 
-$degree = !empty($_GET['degree']) ? $_GET['degree'] : 'f';
 $degree = ($degree == 'f')
 	? '&deg;F | <a href="?degree=c">&deg;C</a>'
 	: '&deg;C | <a href="?degree=f">&deg;F</a>';
