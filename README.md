@@ -10,7 +10,6 @@ Clone the repo, `git clone git://github.com/Geczy/google-weather-api.git`, or [d
 
 ```php
 <?php
-
 include_once('classes/google_weather.class.php');
 
 $googleWeather = new Google_Weather();
@@ -20,6 +19,59 @@ $weatherData = $googleWeather->getWeather();
 include('views/example1.php');
 ```
 
+Customizing
+------------
+
+You can display multiple weather data on one page, in different languages, degrees, etc.
+Start by setting your defaults, and then using the functions provided to display multiple versions of weather.
+
+### Overriding defaults
+
+Simply instantiate Google_Weather with your own variables to overridde the defaults. For example:
+
+```php
+<?php
+$defaults = array(
+	'location' => 'Paris',
+	'degree'   => 'c',
+	'language' => 'fr',
+	'icons'    => 'Google'
+);
+
+new Google_Weather($defaults);
+```
+
+### Retrieve a location
+
+```php
+<?php
+$googleWeather->getWeather('Paris');
+```
+
+### Retrieve in Celsius or Fahrenheit
+
+```php
+<?php
+$googleWeather->setDegree('c'); // 'c' or 'f'
+$googleWeather->getWeather('Paris');
+```
+
+### Set a language
+
+```php
+<?php
+$googleWeather->setLanguage('fr');
+$googleWeather->getWeather('Paris');
+```
+
+### Custom weather icons
+
+```php
+<?php
+$googleWeather->setIcons('Google'); // Must exist in /assets/icons/*
+$googleWeather->getWeather('Paris');
+```
+
 Example response
 ------------
 
@@ -27,8 +79,6 @@ Here's an example of what getWeather() will return:
 
 ```php
 <?php
-
-$weatherData =
 array (size=3)
   'info' =>
 	array (size=3)
