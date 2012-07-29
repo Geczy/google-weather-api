@@ -3,6 +3,12 @@ Google Weather API
 
 Google Weather API is a PHP based library for retrieving and displaying weather at any location, utilizing Google's weather API.
 
+Live examples
+-----------
+
+* http://mgates.me/weather/
+* ?
+
 Quick start
 ------------
 
@@ -119,12 +125,6 @@ array (size=3)
 		  'icon' => string 'http://mgates.me/weather/assets/img/Dotvoid/sunny.gif' (length=93)
 		  'condition' => string 'Clear' (length=5)
 ```
-
-Show case
-------------
-
-* http://mgates.me/weather/
-* You?
 
 Bug tracker
 -----------
