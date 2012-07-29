@@ -18,7 +18,7 @@ Clone the repo, `git clone git://github.com/Geczy/google-weather-api.git`, or [d
 <?php
 include_once('classes/google_weather.class.php');
 
-$googleWeather = new Google_Weather();
+$googleWeather = new \Geczy\Weather\GoogleWeatherAPI();
 $weatherData = $googleWeather->getWeather();
 
 /* Your view file that formats the array response. */
@@ -33,7 +33,7 @@ Start by setting your defaults, and then using the functions provided to display
 
 ### Overriding defaults
 
-Simply instantiate Google_Weather with your own variables to override the defaults. For example:
+Simply instantiate GoogleWeatherAPI with your own variables to override the defaults. For example:
 
 ```php
 <?php
@@ -44,7 +44,7 @@ $defaults = array(
 	'icons'    => 'Google'
 );
 
-new Google_Weather($defaults);
+$googleWeather = new \Geczy\Weather\GoogleWeatherAPI($defaults);
 ```
 
 ### Retrieve a location

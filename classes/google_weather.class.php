@@ -16,7 +16,8 @@
  * @link         https://github.com/Geczy/google-weather-api
  */
 
-class Google_Weather  {
+namespace Geczy\Weather;
+class GoogleWeatherAPI {
 
 	/**
 	 * Default settings.

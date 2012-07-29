@@ -36,7 +36,7 @@
               include_once('classes/google_weather.class.php');
 
               /* Instantiate class. */
-              $googleWeather = new Google_Weather();
+              $googleWeather = new \Geczy\Weather\GoogleWeatherAPI();
 
               /* Set degree. */
               $degree = !empty($_GET['degree']) ? $_GET['degree'] : 'f';
