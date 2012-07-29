@@ -205,7 +205,7 @@ class Google_Weather  {
 		$url = 'http://www.google.com/ig/api?';
 
 		$args = array(
-			'weather' => urlencode(trim($this->location)),
+			'weather' => trim($this->location),
 			'hl'      => $this->language,
 			'ie'      => 'utf-8',
 			'oe'      => 'utf-8',
