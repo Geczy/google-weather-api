@@ -128,7 +128,7 @@ class GoogleWeatherAPI {
 				$this->defaults['degree'] = 'f';
 				break;
 
-			endswitch;
+		endswitch;
 
 	}
 
