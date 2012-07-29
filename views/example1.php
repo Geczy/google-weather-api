@@ -18,41 +18,41 @@ $degree = ($degree == 'f')
 </style>
 
 <div class="weatherHeader">
-	<b>Weather</b> for <b><?php echo $processed['info']['city']; ?></b>
+  <b>Weather</b> for <b><?php echo $processed['info']['city']; ?></b>
 </div>
 
 <table>
 
-	<tbody>
+  <tbody>
 
-	<tr>
-		<td><img id="mainTempImg" src="<?php echo $processed['current']['icon']; ?>"></td>
-		<td>
-			<h3 class="currentTemp"><?php echo $processed['current']['temp_f']; ?> <?php echo $degree; ?></h3>
-			<div class="tempDetails">
-				<p><?php echo $processed['current']['condition']; ?></p>
-				<p><?php echo $processed['current']['wind_condition']; ?></p>
-				<p><?php echo $processed['current']['humidity']; ?></p>
-			</div>
-		</td>
+  <tr>
+    <td><img id="mainTempImg" src="<?php echo $processed['current']['icon']; ?>"></td>
+    <td>
+      <h3 class="currentTemp"><?php echo $processed['current']['temp_f']; ?> <?php echo $degree; ?></h3>
+      <div class="tempDetails">
+        <p><?php echo $processed['current']['condition']; ?></p>
+        <p><?php echo $processed['current']['wind_condition']; ?></p>
+        <p><?php echo $processed['current']['humidity']; ?></p>
+      </div>
+    </td>
 
-		<td style="width:5px;border-left:solid 1px #d8d8d8"></td>
+    <td style="width:5px;border-left:solid 1px #d8d8d8"></td>
 
-		<?php foreach ( $processed['forecast'] as $day => $forecast ) : ?>
+    <?php foreach ( $processed['forecast'] as $day => $forecast ) : ?>
 
-			<td class="forecast">
-				<p><?php echo $day; ?></p>
-				<p><img class="forecastImages" src="<?php echo $forecast['icon']; ?>"></p>
-				<div class="forecastTemp">
-					<span class="high"><?php echo $forecast['high']; ?>&deg;</span>
-					<span class="low"><?php echo $forecast['low']; ?>&deg;</span>
-				</div>
-			</td>
+      <td class="forecast">
+        <p><?php echo $day; ?></p>
+        <p><img class="forecastImages" src="<?php echo $forecast['icon']; ?>"></p>
+        <div class="forecastTemp">
+          <span class="high"><?php echo $forecast['high']; ?>&deg;</span>
+          <span class="low"><?php echo $forecast['low']; ?>&deg;</span>
+        </div>
+      </td>
 
-		<?php endforeach; ?>
+    <?php endforeach; ?>
 
-	</tr>
+  </tr>
 
-	</tbody>
+  </tbody>
 
 </table>
