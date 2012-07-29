@@ -33,7 +33,7 @@ Start by setting your defaults, and then using the functions provided to display
 
 ### Overriding defaults
 
-Simply instantiate Google_Weather with your own variables to overridde the defaults. For example:
+Simply instantiate Google_Weather with your own variables to override the defaults. For example:
 
 ```php
 <?php
