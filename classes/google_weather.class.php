@@ -34,7 +34,7 @@ class Google_Weather  {
 		$this->defaultSettings($defaults);
 		$this->formRequests();
 
-		$this->displayMessage($this->error);
+		$this->displayError($this->error);
 
 	}
 
@@ -328,7 +328,7 @@ class Google_Weather  {
 	 *
 	 * @param    string    $message    Message to display to the user.
 	 */
-	private function displayMessage($message) {
+	private function displayError($message) {
 
 		if ( empty($message) ) return false;
 
