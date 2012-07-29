@@ -54,11 +54,5 @@
 
     </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="assets/js/weather.js?<?php echo filemtime(dirname(__FILE__) . '/assets/js/weather.js'); ?>"></script>
-
   </body>
 </html>
