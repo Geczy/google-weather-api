@@ -160,7 +160,7 @@ class GoogleWeatherAPI {
 	 */
 	private function sendRequest($query) {
 
-		$xml = simplexml_load_file($query);
+		$xml = @simplexml_load_file($query);
 
 		return $xml;
 
@@ -174,6 +174,8 @@ class GoogleWeatherAPI {
 	 */
 	private function validateResponse($response) {
 
+		if ( !$response ) return false;
+
 		/* Save the bits that we actually use from the response. */
 		$response = array(
 			'info'     => $response->xpath("/xml_api_reply/weather/forecast_information"),
@@ -183,8 +185,6 @@ class GoogleWeatherAPI {
 
 		/* Remove empty results */
 		$response = array_filter( $response );
-
-		if ( empty($response) ) $response = false;
 
 		return $response;
 
