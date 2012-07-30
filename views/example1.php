@@ -1,5 +1,24 @@
 <?php
 
+/**
+ * Possible icon sets include:
+ *  Google
+ *  Dotvoid
+ *  KWeather
+ *  NYTimes
+ *  Yahoo
+ */
+$iconSet = 'Dotvoid';
+
+/*
+ * Eg: http://mgates.me/weather/assets/img/Dotvoid/*.gif
+ */
+$imagePath = (!empty($_SERVER['https']) ? 'https://' : 'http://')
+			. $_SERVER['HTTP_HOST']
+			. dirname(str_replace('views', '', $_SERVER['SCRIPT_NAME']))
+			. '/assets/img/'
+			. $iconSet;
+
 $degree = ($degree == 'f')
 	? '&deg;F | <a href="?degree=c">&deg;C</a>'
 	: '&deg;C | <a href="?degree=f">&deg;F</a>';
@@ -25,7 +44,7 @@ $degree = ($degree == 'f')
   <tbody>
 
   <tr>
-    <td><img id="mainTempImg" src="<?php echo $weatherData['current']['icon']; ?>"></td>
+    <td><img id="mainTempImg" src="<?php echo $imagePath . $weatherData['current']['icon']; ?>"></td>
     <td>
       <h3 class="currentTemp"><?php echo $weatherData['current']['temp_f']; ?> <?php echo $degree; ?></h3>
       <div class="tempDetails">
@@ -41,7 +60,7 @@ $degree = ($degree == 'f')
 
       <td class="forecast">
         <p><?php echo $day; ?></p>
-        <p><img class="forecastImages" src="<?php echo $forecast['icon']; ?>"></p>
+        <p><img class="forecastImages" src="<?php echo $imagePath . $forecast['icon']; ?>"></p>
         <div class="forecastTemp">
           <span class="high"><?php echo $forecast['high']; ?>&deg;</span>
           <span class="low"><?php echo $forecast['low']; ?>&deg;</span>

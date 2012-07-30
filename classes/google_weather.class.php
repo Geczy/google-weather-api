@@ -25,7 +25,6 @@ class GoogleWeatherAPI {
 	public $defaults = array(
 		'degree'   => 'f',
 		'language' => 'en',
-		'icons'    => 'Dotvoid'
 	);
 
 	/**
@@ -54,7 +53,6 @@ class GoogleWeatherAPI {
 
 		if ( !empty($defaults) ) $this->defaults = array_merge($this->defaults, $defaults);
 
-		$this->setIcons($this->defaults['icons']);
 		$this->setLanguage($this->defaults['language']);
 		$this->setDegree($this->defaults['degree']);
 
@@ -79,29 +77,6 @@ class GoogleWeatherAPI {
 	public function setLanguage($language) {
 
 		$this->language = $language;
-
-	}
-
-	/**
-	 * Icons for displaying weather images.
-	 *
-	 * Possible icon sets include:
-	 *  Google
-	 *  Dotvoid
-	 *  KWeather
-	 *  NYTimes
-	 *  Yahoo
-	 *
-	 * @param    string    $iconSet    The folder name containing your icons in `/assets/img/*`.
-	 */
-	public function setIcons($iconSet) {
-
-		$this->iconPath =
-			(!empty($_SERVER['https']) ? 'https://' : 'http://')
-			. $_SERVER['HTTP_HOST']
-			. dirname(str_replace('classes', '', $_SERVER['SCRIPT_NAME']))
-			. '/assets/img/'
-			. $iconSet;
 
 	}
 
@@ -237,7 +212,7 @@ class GoogleWeatherAPI {
 			'condition'      => (string) $response['current'][0]->condition['data'],
 			'temp_f'         => $this->convertDegree((string) $response['current'][0]->temp_f['data']),
 			'humidity'       => (string) $response['current'][0]->humidity['data'],
-			'icon'           => $this->iconPath . str_replace('ig/images/weather/', '', (string) $response['current'][0]->icon['data']),
+			'icon'           => str_replace('ig/images/weather/', '', (string) $response['current'][0]->icon['data']),
 			'wind_condition' => (string) $response['current'][0]->wind_condition['data'],
 		);
 
@@ -248,7 +223,7 @@ class GoogleWeatherAPI {
 			$forecasts[ (string) $forecast->day_of_week['data'] ] = array(
 				'low'       => $this->convertDegree((string) $forecast->low['data'], $info['unit']),
 				'high'      => $this->convertDegree((string) $forecast->high['data'], $info['unit']),
-				'icon'      => $this->iconPath .  str_replace('ig/images/weather/', '', (string) $forecast->icon['data']),
+				'icon'      => str_replace('ig/images/weather/', '', (string) $forecast->icon['data']),
 				'condition' => (string) $forecast->condition['data'],
 			);
 
