@@ -80,12 +80,6 @@ Icon sets included are:
 
 See a suggestion in [views/example1.php](https://github.com/Geczy/google-weather-api/blob/master/views/example1.php) for using these icons.
 
-```php
-<?php
-$googleWeather->setIcons('Google'); // Must exist in `/assets/img/*`
-$googleWeather->getWeather('Paris');
-```
-
 Example response
 ------------
 
