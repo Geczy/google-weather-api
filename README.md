@@ -40,7 +40,6 @@ Simply instantiate GoogleWeatherAPI with your own variables to override the defa
 $defaults = array(
 	'degree'   => 'c',
 	'language' => 'fr',
-	'icons'    => 'Google'
 );
 
 $googleWeather = new \Geczy\Weather\GoogleWeatherAPI($defaults);
@@ -71,6 +70,16 @@ $googleWeather->getWeather('Paris');
 
 ### Custom weather icons
 
+Icon sets included are:
+
+ *  Google
+ *  Dotvoid
+ *  KWeather
+ *  NYTimes
+ *  Yahoo
+
+See a suggestion in [views/example1.php](https://github.com/Geczy/google-weather-api/blob/master/views/example1.php) for using these icons.
+
 ```php
 <?php
 $googleWeather->setIcons('Google'); // Must exist in `/assets/img/*`
@@ -95,7 +104,7 @@ array (size=3)
 	  'condition' => string 'Cloudy' (length=6)
 	  'temp_f' => string '66' (length=2)
 	  'humidity' => string 'Humidity: 73%' (length=13)
-	  'icon' => string 'http://mgates.me/weather/assets/img/Dotvoid/cloudy.gif' (length=94)
+	  'icon' => string 'cloudy.gif' (length=94)
 	  'wind_condition' => string 'Wind: N at 0 mph' (length=16)
   'forecast' =>
 	array (size=4)
@@ -103,25 +112,25 @@ array (size=3)
 		array (size=4)
 		  'low' => string '63' (length=2)
 		  'high' => string '79' (length=2)
-		  'icon' => string 'http://mgates.me/weather/assets/img/Dotvoid/mostly_sunny.gif' (length=100)
+		  'icon' => string 'mostly_sunny.gif' (length=100)
 		  'condition' => string 'Mostly Sunny' (length=12)
 	  'Mon' =>
 		array (size=4)
 		  'low' => string '64' (length=2)
 		  'high' => string '81' (length=2)
-		  'icon' => string 'http://mgates.me/weather/assets/img/Dotvoid/sunny.gif' (length=93)
+		  'icon' => string 'sunny.gif' (length=93)
 		  'condition' => string 'Clear' (length=5)
 	  'Tue' =>
 		array (size=4)
 		  'low' => string '64' (length=2)
 		  'high' => string '84' (length=2)
-		  'icon' => string 'http://mgates.me/weather/assets/img/Dotvoid/mostly_sunny.gif' (length=100)
+		  'icon' => string 'mostly_sunny.gif' (length=100)
 		  'condition' => string 'Mostly Sunny' (length=12)
 	  'Wed' =>
 		array (size=4)
 		  'low' => string '64' (length=2)
 		  'high' => string '82' (length=2)
-		  'icon' => string 'http://mgates.me/weather/assets/img/Dotvoid/sunny.gif' (length=93)
+		  'icon' => string 'sunny.gif' (length=93)
 		  'condition' => string 'Clear' (length=5)
 ```
 
