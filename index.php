@@ -33,23 +33,23 @@
           <div id="details">
             <p><?php
 
-              include_once('classes/google_weather.class.php');
+			include_once('classes/google_weather.class.php');
 
-              /* Instantiate class. */
-              $googleWeather = new \Geczy\Weather\GoogleWeatherAPI();
+			/* Instantiate class. */
+			$googleWeather = new \Geczy\Weather\GoogleWeatherAPI();
 
-              /* Set degree. */
-              $degree = !empty($_GET['degree']) ? $_GET['degree'] : 'f';
-              $googleWeather->setDegree($degree);
+			/* Set degree. */
+			$degree = !empty($_GET['degree']) ? $_GET['degree'] : 'f';
+			$googleWeather->setDegree($degree);
 
-              /* Get data. */
-              $weatherData = $googleWeather->getWeather('Los Angeles');
+			/* Get data. */
+			$weatherData = $googleWeather->getWeather('Los Angeles');
 
-              /* Include the view. */
-			  if ( $weatherData ) :
+			/* Include the view. */
+			if ( $weatherData ) :
 				$viewsDir = dirname(__FILE__) . '/views/';
 				include($viewsDir . 'example1.php');
-			  endif;
+			endif;
 
             ?></p>
           </div>
