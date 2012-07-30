@@ -34,11 +34,6 @@ class GoogleWeatherAPI {
 	private $location;
 
 	/**
-	 * Whether there was an issue retrieving the weather.
-	 */
-	private $error = false;
-
-	/**
 	 * Google Weather constructor.
 	 *
 	 * @param     array    $defaults    Override the default options by providing your own.
@@ -146,14 +141,12 @@ class GoogleWeatherAPI {
 
 		$query = $this->buildRequest();
 		$result = $this->sendRequest($query);
-
 		$validated = $this->validateResponse($result);
-		$processed = $this->processResponse($validated);
 
-		if ( !empty($this->error) ) {
-			$this->displayError($this->error);
-			return false;
-		}
+		/* False if there was an error. */
+		if ( empty($validated) ) return false;
+
+		$processed = $this->processResponse($validated);
 
 		return $processed;
 
@@ -216,8 +209,7 @@ class GoogleWeatherAPI {
 		/* Remove empty results */
 		$response = array_filter( $response );
 
-		if ( empty($response) )
-			$this->error = 'Location could not be determined.';
+		if ( empty($response) ) $response = false;
 
 		return $response;
 
@@ -232,8 +224,6 @@ class GoogleWeatherAPI {
 	 * @return    array    Weather in a pretty array format.
 	 */
 	private function processResponse($response) {
-
-		if ( !empty($this->error) ) return false;
 
 		/* City information. */
 		$info = array(
@@ -298,19 +288,6 @@ class GoogleWeatherAPI {
 		endswitch;
 
 		return $degree;
-
-	}
-
-	/**
-	 * Echo a message.
-	 *
-	 * @param    string    $message    Message to display to the user.
-	 */
-	private function displayError($message) {
-
-		if ( empty($message) ) return false;
-
-		echo sprintf('<span class="%s">%s</span>', 'error', $message);
 
 	}
 
